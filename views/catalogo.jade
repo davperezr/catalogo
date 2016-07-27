@@ -1,0 +1,32 @@
+var catalogo = require("./app").catalogo
+extends ./layout.jade
+block contenido
+ - var contenido = catalogo;
+ - var count = 0;
+ 
+ table.table
+  thead
+    tr
+       th #
+       th Titulo
+       th Precio
+       th Imagen
+       th Operacion
+       
+  tbody
+   - for (var i = contenido.length - 1; i >= 0; i--)
+    - count = count +1
+       tr
+        td= count
+        td= contenido[i].title
+        td= contenido[i].pricing 
+        td
+         img(src="#{contenido[i].imageUrl}" width="200" ) 
+        td
+         button.btn.btn-default.btn-lg(type='submit')
+          span.glyphicon.glyphicon-remove(aria-hidden='true') Eliminar
+         a(href="/#{contenido[i]._id}/edit")
+          button.btn.btn-default.btn-lg(type='button')
+           span.glyphicon.glyphicon-refresh(aria-hidden='true') Actualizar
+       
+     

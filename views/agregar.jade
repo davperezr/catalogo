@@ -1,0 +1,17 @@
+extends ./layout.jade
+block contenido 
+ h1 Ingrese los datos para agregar la nueva imagen
+ form(action="agregar"  method="POST" style= "margin-top:1.5em;" enctype="multipart/form-data")
+    div(class="form-group")
+      label Titulo
+      input(type="text", name="title", placeHolder="titulo de la imagen", id="titulo_imagen", class="form-control")
+    div(class="form-group")
+      label Precio
+      input(type="text", name="pricing", placeHolder="$20000", id="precio_imagen", class="form-control")
+    div(class="form-group")
+      label Imagen
+      input(type="file", name="imagen")
+
+    div
+       button.btn.btn-default.btn-lg(type='submit')
+        span.glyphicon.glyphicon-saved(aria-hidden='true') Guardar
