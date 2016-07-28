@@ -29,12 +29,20 @@ router.route("/agregar")
  })
 
  router.route("/:id")
- .put(function(req,res){
- 
+ .get(function(req,res){
+  billaboard.update({ _id: req.params.id}, {$set:{state: false}}, function(err){
+   if(err){
+   res.send("error al eliminar la imagen intente en otro momento :D");
+   }else{
+    res.redirect("catalogo");
+   } 
+  })
  })
- .delete(function(req,res){
 
- });
+ .put(function(req,res){
+  res.send("hola a todos")
+ })
+ 
 
  router.get("/:id/edit", function(req,res){
   billaboard.findById(req.params.id, function(err, imagen){
