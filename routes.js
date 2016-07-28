@@ -14,7 +14,7 @@ router.get("/", function(req,res){
 
 
 router.get("/catalogo" , function(req, res){
-   billaboard.find(function(err,catalogo){
+   billaboard.find({state: true }, function(err,catalogo){
     if(err){
       res.sendStatus(500).json(err);
     }

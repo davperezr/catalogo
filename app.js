@@ -34,17 +34,16 @@ app.post("/agregar", middleware_upload, function(req,res) {
   }
   var product = new billaboard(datos);
   product.save(function(err){
-    if(req.file){
+  if(req.file){
     cloudinary.uploader.upload(req.file.path, 
         function(result) {
             product.imageUrl = result.url;
-
             product.save(function(err){
                 console.log(product);
-                res.render("index");
+                res.redirect("catalogo");
+               
             });
-        }
-    );
+        });
 }else{
   res.send("Se ha guardado sin imagen");
 }
